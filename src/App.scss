@@ -1,0 +1,94 @@
+.App {
+  text-align: center;
+}
+
+#profile {
+  margin: 2rem auto;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 2rem;
+
+  #bio {
+    border-right: 1px solid #ccc;
+    padding: 2rem;
+    width: 15%;
+    text-align: left;
+
+    img {
+      border-radius: 50%;
+      width: 10rem;
+      height: 10rem;
+    }
+  }
+
+  #repositories {
+    text-align: left;
+    width: 75%;
+    padding: 2rem;
+    ul {
+      padding: 0;
+      li {
+        border-bottom: 1px solid #ccc;
+        list-style-type: none;
+        padding: 1rem;
+        .additional-rep-info {
+          display: flex;
+          span {
+            padding-right: 1rem;
+          }
+          .language {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .language-circle {
+              padding: 0;
+              margin-right: 0.5rem;
+              border-radius: 75%;
+              height: 12px;
+              width: 12px;
+            }
+            .yellow {
+              background-color: yellow;
+            }
+            .red {
+              background-color: red;
+            }
+            .violet {
+              background-color: violet;
+            }
+            .blue {
+              background-color: blue;
+            }
+            .gray {
+              background-color: gray;
+            }
+          }
+        }
+      }
+    }
+  } 
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  
+  p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    &:hover {
+      color: blue;
+      text-decoration: underline;
+    }
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+.bluee {
+  color: blue;
+}
