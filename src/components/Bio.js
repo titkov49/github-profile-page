@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function ({ user }) {
-  console.log(user);
   return (
     <div id="bio">
       <img src={user.avatar_url} alt="avatar" />

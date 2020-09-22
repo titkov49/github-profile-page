@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+.search-bar {
+  padding: 0.5rem;
+  width: 10rem;
+}
+
 #profile {
   margin: 2rem auto;
   display: flex;
@@ -87,8 +92,4 @@ a {
   button {
     width: 100%;
   }
-}
-
-.bluee {
-  color: blue;
 }

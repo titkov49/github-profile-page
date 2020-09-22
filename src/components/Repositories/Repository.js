@@ -1,5 +1,5 @@
 import React from 'react';
-import { getDate, getColor } from '../../../utils';
+import { getDate, getColor } from '../../utils';
 
 export default function ({ item }) {
 
