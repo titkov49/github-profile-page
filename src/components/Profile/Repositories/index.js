@@ -15,6 +15,10 @@ export default function ({ repos }) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reposName]);
 
+  useEffect(() => {
+    setReposName('');
+  }, [repos]);
+
   return (
     <div id="repositories">
       <Input setValue={setReposName} autoloading/>
