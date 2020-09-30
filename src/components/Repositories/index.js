@@ -32,6 +32,7 @@ export default function ({ user }) {
 
   return (
     <div id="repositories" ref={repositoriesRef}>
+      <h1>{user.public_repos} public repositories</h1>
       <ul>
         {repos.map(item => <Repository item={item} key={item.node_id}/>)}
       </ul>
