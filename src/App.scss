@@ -2,27 +2,62 @@
   text-align: center;
 }
 
+p, h1 {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
 .search-bar {
   padding: 0.5rem;
   width: 10rem;
 }
 
 #profile {
-  margin: 2rem auto;
-  display: flex;
-  justify-content: space-evenly;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: space-evenly;
+  }
   padding: 2rem;
 
   #bio {
-    border-right: 1px solid #ccc;
-    padding: 2rem;
-    width: 15%;
+    padding: 0 2rem 1rem 2rem;
+    @media screen and (min-width: 768px) {
+      border-right: 1px solid #ccc;
+      width: 15%;
+    }
     text-align: left;
+    @media screen and (max-width: 768px) {
+      border-bottom: 1px solid #ccc;
+    }
 
     img {
+      text-align: center;
       border-radius: 50%;
+      @media screen and (max-width: 768px) {
+        width: 5rem;
+        height: 5rem;
+      }
       width: 10rem;
       height: 10rem;
+    }
+
+    .main-info {
+      @media screen and (max-width: 768px) {
+        display: flex;
+        padding-bottom: 1rem;
+      }
+      .names {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 1rem;
+        p, h1 {
+          margin: 0;
+        }
+        @media screen and (min-width: 768px) {
+          padding: 1rem 0 0 0;
+        }
+      }
     }
   }
 
