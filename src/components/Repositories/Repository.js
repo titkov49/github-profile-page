@@ -5,7 +5,7 @@ export default function ({ item }) {
 
   return (
     <li>
-      <h4>{item.name}</h4>
+      <h1>{item.name}</h1>
       <p>{item.description}</p>
       <div className="additional-rep-info">
         {item.language && 

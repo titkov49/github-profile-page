@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  margin-top: 1rem;
 }
 
 p, h1 {
@@ -22,12 +23,12 @@ p, h1 {
   #bio {
     padding: 0 2rem 1rem 2rem;
     @media screen and (min-width: 768px) {
-      border-right: 1px solid #ccc;
+      border-right: 1px solid #000;
       width: 15%;
     }
     text-align: left;
     @media screen and (max-width: 768px) {
-      border-bottom: 1px solid #ccc;
+      border-bottom: 1px solid #000;
     }
 
     img {
@@ -63,10 +64,15 @@ p, h1 {
 
   #repositories {
     text-align: left;
-    width: 75%;
-    padding: 2rem;
+    @media screen and (min-width: 768px) {
+      width: 75%;
+      padding: 0 2rem;
+    }
+    padding: 0 1rem;
+
     ul {
       padding: 0;
+      margin: 0;
       li {
         border-bottom: 1px solid #ccc;
         list-style-type: none;
@@ -107,6 +113,12 @@ p, h1 {
         }
       }
     }
+
+    .buttons-container {
+      padding-top: 1rem;
+      display: flex;
+      justify-content: center;
+    }
   } 
 }
 
@@ -126,5 +138,8 @@ a {
 
   button {
     width: 100%;
+    @media screen and (min-width) {
+      padding: 0.25rem;
+    }
   }
 }

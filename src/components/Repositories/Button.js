@@ -2,11 +2,13 @@ import React from 'react';
 
 export default function ({ onClick, className, label }) {
   return (
-    <button
-      onClick={onClick}
-      className={className}
-    >
-      <a href="#repositories">{label}</a>
-    </button>
+    <a href="#repositories">
+      <button
+        onClick={onClick}
+        className={className}
+      >
+        {label}
+      </button>
+    </a>
   )
 }
