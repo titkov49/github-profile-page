@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Repository from './Repository';
 import Button from './Button';
+import { scrollToRef } from '../../utils';
 
 export default function ({ user }) {
   const [repos, setRepos] = useState([]);
   const [page, setPage] = useState(1);
+  const repositoriesRef = useRef(null);
 
   const pagesNum = Math.ceil(user.public_repos / 10)
   const isFirstPage = () => page === 1;
@@ -13,11 +15,13 @@ export default function ({ user }) {
   const onPrevPage = () => {
     if (isFirstPage()) return;
     setPage(prev => prev - 1);
+    scrollToRef(repositoriesRef);
   };
 
   const onNextPage = () => {
     if (isLastPage()) return;
     setPage(prev => prev + 1);
+    scrollToRef(repositoriesRef);
   };
 
   useEffect(() => {
@@ -27,7 +31,7 @@ export default function ({ user }) {
   }, [user, page]);
 
   return (
-    <div id="repositories">
+    <div id="repositories" ref={repositoriesRef}>
       <ul>
         {repos.map(item => <Repository item={item} key={item.node_id}/>)}
       </ul>

@@ -8,6 +8,31 @@ p, h1 {
   font-size: 1rem;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+  
+  p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    &:hover {
+      color: blue;
+      text-decoration: underline;
+    }
+  }
+}
+
+button {
+  width: 100%;
+  @media screen and (min-width) {
+    padding: 0.25rem;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 .search-bar {
   padding: 0.5rem;
   width: 10rem;
@@ -118,28 +143,15 @@ p, h1 {
       padding-top: 1rem;
       display: flex;
       justify-content: center;
+
+      button {
+        width: 10%;
+      }
+
+      .disabled {
+        background-color: #ccc;
+        cursor: initial;
+      }
     }
   } 
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-  
-  p {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    &:hover {
-      color: blue;
-      text-decoration: underline;
-    }
-  }
-
-  button {
-    width: 100%;
-    @media screen and (min-width) {
-      padding: 0.25rem;
-    }
-  }
 }
