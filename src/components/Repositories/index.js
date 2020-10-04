@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Repository from './Repository';
-// import Button from './Button';
 import { scrollToRef } from '../../utils';
 
 export default function ({ user }) {
@@ -13,16 +12,13 @@ export default function ({ user }) {
   const isLastPage = () => page === pagesNum;
 
   const onPage = (arg) => {
-    if ((isFirstPage() && arg === -1) || (isLastPage() && arg === 1)) return;
+    if (
+      (isFirstPage() && arg === -1) 
+      || (isLastPage() && arg === 1)
+    ) return;
     setPage(prev => prev + arg);
     scrollToRef(repositoriesRef);
   };
-
-  // const onNextPage = () => {
-  //   if (isLastPage()) return;
-  //   setPage(prev => prev + 1);
-  //   scrollToRef(repositoriesRef);
-  // };
 
   useEffect(() => {
     fetch(`https://api.github.com/users/${user.login}/repos?page=${page}&per_page=10`)
