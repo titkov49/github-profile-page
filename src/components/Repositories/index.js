@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Repository from './Repository';
-import Button from './Button';
+// import Button from './Button';
 import { scrollToRef } from '../../utils';
 
 export default function ({ user }) {
@@ -12,17 +12,17 @@ export default function ({ user }) {
   const isFirstPage = () => page === 1;
   const isLastPage = () => page === pagesNum;
 
-  const onPrevPage = () => {
-    if (isFirstPage()) return;
-    setPage(prev => prev - 1);
+  const onPage = (arg) => {
+    if ((isFirstPage() && arg === -1) || (isLastPage() && arg === 1)) return;
+    setPage(prev => prev + arg);
     scrollToRef(repositoriesRef);
   };
 
-  const onNextPage = () => {
-    if (isLastPage()) return;
-    setPage(prev => prev + 1);
-    scrollToRef(repositoriesRef);
-  };
+  // const onNextPage = () => {
+  //   if (isLastPage()) return;
+  //   setPage(prev => prev + 1);
+  //   scrollToRef(repositoriesRef);
+  // };
 
   useEffect(() => {
     fetch(`https://api.github.com/users/${user.login}/repos?page=${page}&per_page=10`)
@@ -36,18 +36,20 @@ export default function ({ user }) {
       <ul>
         {repos.map(item => <Repository item={item} key={item.node_id}/>)}
       </ul>
-      {pagesNum > 1 && repos.length > 0 &&
+      {pagesNum > 1 &&
         <div className="buttons-container">
-          <Button
-            onClick={onPrevPage}
+          <button
+            onClick={() => onPage(-1)}
             className={isFirstPage() ? 'disabled' : 'active'}
-            label="Prev"
-          />
-          <Button
-            onClick={onNextPage}
+          >
+            Prev
+          </button>
+          <button
+            onClick={() => onPage(1)}
             className={isLastPage() ? 'disabled' : 'active'}
-            label="Next"
-          />
+          >
+            Next
+          </button>
         </div>
       }
     </div>

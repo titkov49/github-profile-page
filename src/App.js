@@ -15,13 +15,12 @@ function App() {
     fetch(`https://api.github.com/users/${username}`)
       .then(res => {
         if (res.status === 404) throw Error(res.statusText);
-        setErr(false)
+        setErr(false);
         return res.json();
       })
       .then(data => setUser(data))
       .catch(e => {
         setErr(true);
-        setUser(null);
       });
   }, [username]);
 
