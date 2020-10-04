@@ -1,32 +1,103 @@
 .App {
   text-align: center;
+  margin-top: 1rem;
+}
+
+p, h1 {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  
+  p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    &:hover {
+      color: blue;
+      text-decoration: underline;
+    }
+  }
+}
+
+button {
+  width: 100%;
+  @media screen and (min-width) {
+    padding: 0.25rem;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.search-bar {
+  padding: 0.5rem;
+  width: 10rem;
 }
 
 #profile {
-  margin: 2rem auto;
-  display: flex;
-  justify-content: space-evenly;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: space-evenly;
+  }
   padding: 2rem;
 
   #bio {
-    border-right: 1px solid #ccc;
-    padding: 2rem;
-    width: 15%;
+    padding: 0 2rem 1rem 2rem;
+    @media screen and (min-width: 768px) {
+      border-right: 1px solid #000;
+      width: 15%;
+    }
     text-align: left;
+    @media screen and (max-width: 768px) {
+      border-bottom: 1px solid #000;
+    }
 
     img {
+      text-align: center;
       border-radius: 50%;
+      @media screen and (max-width: 768px) {
+        width: 5rem;
+        height: 5rem;
+      }
       width: 10rem;
       height: 10rem;
+    }
+
+    .main-info {
+      @media screen and (max-width: 768px) {
+        display: flex;
+        padding-bottom: 1rem;
+      }
+      .names {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 1rem;
+        p, h1 {
+          margin: 0;
+        }
+        @media screen and (min-width: 768px) {
+          padding: 1rem 0 0 0;
+        }
+      }
     }
   }
 
   #repositories {
     text-align: left;
-    width: 75%;
-    padding: 2rem;
+    @media screen and (min-width: 768px) {
+      width: 75%;
+      padding: 0 2rem;
+    }
+    padding: 0 1rem;
+
     ul {
       padding: 0;
+      margin: 0;
       li {
         border-bottom: 1px solid #ccc;
         list-style-type: none;
@@ -67,28 +138,20 @@
         }
       }
     }
-  } 
-}
 
-a {
-  text-decoration: none;
-  color: inherit;
-  
-  p {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    &:hover {
-      color: blue;
-      text-decoration: underline;
+    .buttons-container {
+      padding-top: 1rem;
+      display: flex;
+      justify-content: center;
+
+      button {
+        width: 10%;
+      }
+
+      .disabled {
+        background-color: #ccc;
+        cursor: initial;
+      }
     }
-  }
-
-  button {
-    width: 100%;
-  }
-}
-
-.bluee {
-  color: blue;
+  } 
 }

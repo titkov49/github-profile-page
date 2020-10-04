@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-export default function ({ setValue, autoloading }) {
+export default function ({ setValue, placeholder, autoloading }) {
   const [str, setString] = useState('');
   const timeoutRef = useRef();
 
@@ -25,6 +25,8 @@ export default function ({ setValue, autoloading }) {
         value={str}
         onChange={e => setString(e.target.value)}
         onKeyPress={e => onEnterPress(e)}
+        placeholder={placeholder}
+        className="search-bar"
       />
     </div>
   )

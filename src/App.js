@@ -1,34 +1,39 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import Input from './components/Input';
-import Profile from './components/Profile';
+import Bio from './components/Bio';
+import Repositories from './components/Repositories';
+import Error from './components/Error';
 import './App.scss';
 
 function App() {
   const [username, setUsername] = useState('');
-  const [profile, setProfile] = useState(null);
+  const [user, setUser] = useState(null);
+  const [err, setErr] = useState(false);
 
   useEffect(() => {
     if (!username) return;
-    axios.all([
-      axios.get(`https://api.github.com/users/${username}`),
-      axios.get(`https://api.github.com/users/${username}/repos?per_page=50`)
-    ])
-    .then(([user, repos]) => setProfile({
-      user: user.data,
-      repos: repos.data
-    }));
+    fetch(`https://api.github.com/users/${username}`)
+      .then(res => {
+        if (res.status === 404) throw Error(res.statusText);
+        setErr(false);
+        return res.json();
+      })
+      .then(data => setUser(data))
+      .catch(e => {
+        setErr(true);
+      });
   }, [username]);
-
-  useEffect(()=>{
-    if(!profile) return;
-    console.log("PROFILE", profile)
-  }, [profile])
 
   return (
     <div className="App">
-      <Input setValue={setUsername}/>
-      {profile && <Profile profile={profile}/>}
+      <Input setValue={setUsername} placeholder="Type username" />
+      {err && <Error />}
+      {user && !err &&
+        <div id="profile">
+          <Bio user={user} />
+          <Repositories user={user} />
+        </div>
+      }
     </div>
   );
 }
